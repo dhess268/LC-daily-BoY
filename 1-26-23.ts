@@ -48,3 +48,32 @@ function topFreq(arr: number[], k: number) {
     }
   }
 }
+
+// group anagrams
+// 1. create a hash table for each of length 26 with the index at the charCode and value as freq
+// 2. join the has tables with #
+// 3. append each hash table to a hash map where the key is the frequency, value is an array of the words
+
+function groupAnagrams(strs) {
+  const wordFreq = {};
+
+  strs.forEach((string) => {
+    const freq = new Array(26).fill(0);
+
+    for (let i = 0; i < string.length; i++) {
+      // step 1.
+      const charCode = string[i].charCodeAt(0) - "a".charCodeAt(0);
+
+      freq[charCode] += 1;
+    }
+
+    // step 2.
+    const frequencyCode = freq.join("#");
+
+    wordFreq[frequencyCode] = (wordFreq[frequencyCode] || []).push(
+      frequencyCode
+    );
+  });
+
+  return Object.values(wordFreq);
+}
