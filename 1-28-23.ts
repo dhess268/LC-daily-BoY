@@ -34,3 +34,34 @@ function productOfArray(nums: number[]) {
     prod *= nums[i];
   }
 }
+
+function isValidSudoku(arr: number[][]) {
+  // 3 steps
+  // all rows are valid
+  for (let i = 0; i < arr.length; i++) {
+    const rowHashmap = {};
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j]) {
+        // check
+        if (rowHashmap[arr[i][j]]) {
+          return false;
+        }
+        rowHashmap[arr[i][j]] = true;
+      }
+    }
+  }
+  // all columns are valid
+  for (let i = 0; i < arr.length; i++) {
+    const rowHashmap = {};
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j]) {
+        // check
+        if (rowHashmap[arr[i][j]]) {
+          return false;
+        }
+        rowHashmap[arr[i][j]] = true;
+      }
+    }
+  }
+  // all 3x3 squares are valid
+}
